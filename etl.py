@@ -7,21 +7,36 @@ def load_staging_tables(cur, conn):
     """
     Loads data from S3 bucket to the two staging tables (logs_staging_tables, songs_statging_tables)
     """
-    for query in copy_table_queries:
-        cur.execute(query)
-        conn.commit()
-
+    try:
+        for query in copy_table_queries:
+            cur.execute(query)
+            conn.commit()
+        
+        print('Staging tables loaded from S3 bucket successfully :)')
+    
+    except psycopg2.Error as e:
+        print(e)
 
 def insert_tables(cur, conn):
     """
     Loads data from the two staging tables to the database tables
     """
-    for query in insert_table_queries:
-        cur.execute(query)
-        conn.commit()
+    try:
+        for query in insert_table_queries:
+            cur.execute(query)
+            conn.commit()
+        
+        print('Data loaded from staging tables into Database tables successfully :)')
+
+    except psycopg2.Error as e:
+        print(e)
 
 
 def main():
+    """
+    Loads data from S3 bucket to staging tables,
+    and then loads data from staging tables to Database tables.
+    """
     config = configparser.ConfigParser()
     config.read('dwh.cfg')
 
