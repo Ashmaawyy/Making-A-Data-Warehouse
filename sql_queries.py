@@ -83,9 +83,9 @@ staging_events_copy = (""" COPY staging_events
 """).format(config['S3']['LOG_DATA'], *config['IAM_ROLE'].values())
 
 staging_songs_copy = (""" COPY staging_songs
-                           FROM {}
-                           IAM_ROLE {}
-                           REGION 'us-east-1';
+                          FROM {}
+                          IAM_ROLE {}
+                          REGION 'us-east-1';
 """).format(config['S3']['SONG_DATA'], *config['IAM_ROLE'].values())
 
 # FINAL TABLES
