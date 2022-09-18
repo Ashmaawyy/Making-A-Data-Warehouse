@@ -46,13 +46,13 @@ def main():
                                    user={} 
                                    password={} 
                                    port={}""".format(*config['CLUSTER'].values()))
+        cur = conn.cursor()
 
         print('Connected to Database successfully :)')
 
     except psycopg2.Error as e:
         print(e)
     
-    cur = conn.cursor()
 
     drop_tables(cur, conn)
     create_tables(cur, conn)
