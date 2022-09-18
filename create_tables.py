@@ -46,18 +46,17 @@ def main():
                                    user={} 
                                    password={} 
                                    port={}""".format(*config['CLUSTER'].values()))
-        cur = conn.cursor()
-
+        
         print('Connected to Database successfully :)')
+        cur = conn.cursor()
+        drop_tables(cur, conn)
+        create_tables(cur, conn)
+
+        conn.close()
+        print('Dropped existing Database tables and re-created them successfully :)')
 
     except psycopg2.Error as e:
         print(e)
-    
-
-    drop_tables(cur, conn)
-    create_tables(cur, conn)
-
-    conn.close()
 
 
 if __name__ == "__main__":
