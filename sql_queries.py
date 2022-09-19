@@ -132,25 +132,39 @@ staging_songs_copy = (""" COPY staging_songs
 user_table_insert = (""" INSERT INTO users (user_id, first_name, last_name, gender, level) \
     VALUES (SELECT userId, firstName, lastName, gender, level
             FROM staging_events
-            WHERE page = 'NextSong';) 
+            WHERE page = 'NextSong';) \
             ON CONFLICT (user_id) DO UPDATE SET level = EXCLUDED.level;
 """)
 
 song_table_insert = (""" INSERT INTO songs (song_id, artist_id, title, duration, year) \
     VALUES (SELECT song_id, artist_id, title, duration, year
-            FROM staging_songs;) ON CONFLICT DO NOTHING;
+            FROM staging_songs;) \
+            ON CONFLICT DO NOTHING;
 """)
 
 artist_table_insert = (""" INSERT INTO artists (artist_id, latitude, longitude, location, name) \
     VALUES (SELECT artist_id, artist_latitude, artist_longitude, artist_location, artist_name
-            FROM staging_songs;) ON CONFLICT (artist_id) DO NOTHING;
+            FROM staging_songs;) \
+            ON CONFLICT (artist_id) DO NOTHING;
 """)
 
 time_table_insert = (""" INSERT INTO time (start_time, hour, day, week, month, year, weekday) \
-    VALUES (SELECT TO_TIMESTAMP(ls), DATE_PART(hour, TO_TIMESTAMP(ls)), DATE_PART(day, TO_TIMESTAMP(ls)), DATE_PART(week, TO_TIMESTAMP(ls)), DATE_PART(month, TO_TIMESTAMP(ls)), DATE_PART(year, TO_TIMESTAMP(ls)), DATE_PART(weekday, TO_TIMESTAMP(ls))
-            FROM staging_events
-            WHERE page = 'NextSong';) ON CONFLICT (start_time)
-    DO UPDATE SET start_time = EXCLUDED.start_time;
+    VALUES (
+        SELECT
+        TO_TIMESTAMP(ls),
+        DATE_PART(hour,
+        TO_TIMESTAMP(ls)),
+        DATE_PART(day,
+        TO_TIMESTAMP(ls)),
+        DATE_PART(week,
+        TO_TIMESTAMP(ls)),
+        DATE_PART(month,
+        TO_TIMESTAMP(ls)),
+        DATE_PART(year, TO_TIMESTAMP(ls)),
+        DATE_PART(weekday, TO_TIMESTAMP(ls))
+        FROM staging_events
+        WHERE page = 'NextSong';) \
+        ON CONFLICT (start_time) DO UPDATE SET start_time = EXCLUDED.start_time;
 """)
 
 songplay_table_insert = (""" INSERT INTO songplays
