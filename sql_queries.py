@@ -19,95 +19,95 @@ time_table_drop = "DROP TABLE IF EXISTS time"
 
 staging_events_table_create= (""" CREATE TABLE IF NOT EXISTS staging_events
 (
-    artist varchar(20),
-    auth varchar(20),
-    firstName varchar(20),
-    gender varchar(5),
-    itemInSession int,
-    lastName varchar(20),
-    lengh double precision,
-    level varchar(4),
-    location varchar(20),
-    method varchar(3),
-    page varchar(8),
-    regestration double precision,
-    sessionId int,
-    song varchar(50),
-    status int,
-    ts bigint,
-    userAgent varchar(50),
-    userId int
+    artist VARCHAR(20),
+    auth VARCHAR(20),
+    firstName VARCHAR(20),
+    gender VARCHAR(5),
+    itemInSession INT,
+    lastName VARCHAR(20),
+    lengh DOUBLE PRECISION,
+    level VARCHAR(4),
+    location VARCHAR(20),
+    method VARCHAR(3),
+    page VARCHAR(8),
+    regestration DOUBLE PRECISION,
+    sessionId INT,
+    song VARCHAR(50),
+    status INT,
+    ts BIGINT,
+    userAgent VARCHAR(50),
+    userId INT
 );
 """)
 
 staging_songs_table_create = (""" CREATE TABLE IF NOT EXISTS staging_songs
 (
-    num_songs int,
-    artist_id varchar(),
-    artist_latitude double precision,
-    artist_longitude double precision,
-    artist_location varchar(),
-    artist_name varchar(),
-    song_id varchar(),
-    title varchar(),
-    duration double precision
+    num_songs INT,
+    artist_id VARCHAR(50),
+    artist_latitude DOUBLE PRECISION,
+    artist_longitude DOUBLE PRECISION,
+    artist_location VARCHAR(20),
+    artist_name VARCHAR(20),
+    song_id VARCHAR(50),
+    title VARCHAR(50),
+    duration DOUBLE PRECISION
 );
 """)
 
 user_table_create = (""" CREATE TABLE IF NOT EXISTS users
 (
-    user_id int PRIMARY KEY NOT NULL,
-    first_name varchar,
-    last_name varchar,
-    gender varchar,
-    level varchar NOT NULL DEFAULT 'free',
+    user_id INT PRIMARY KEY NOT NULL,
+    first_name VARCHAR(20),
+    last_name VARCHAR(20),
+    gender VARCHAR(4),
+    level VARCHAR(4) NOT NULL DEFAULT 'free',
     CONSTRAINT check_level CHECK (level = 'free' OR level = 'paid')
 );
 """)
 
 song_table_create = (""" CREATE TABLE IF NOT EXISTS songs
 (
-    song_id varchar PRIMARY KEY NOT NULL,
-    title varchar(),
-    artist_id varchar(),
-    year int,
-    duration double precision
+    song_id VARCHAR(50) PRIMARY KEY NOT NULL,
+    title VARCHAR(50),
+    artist_id VARCHAR(50),
+    year INT,
+    duration DOUBLE PRECISION
 );
 """)
 
 artist_table_create = (""" CREATE TABLE IF NOT EXISTS artists
 (
-    artist_id varchar PRIMARY KEY NOT NULL,
-    name varchar(),
-    location varchar(),
-    latitude double precision,
-    longitude double precision
+    artist_id VARCHAR(50) PRIMARY KEY NOT NULL,
+    name VARCHAR(20),
+    location VARCHAR(),
+    latitude DOUBLE PRECISION,
+    longitude DOUBLE PRECISION
 );
 """)
 
 time_table_create = (""" CREATE TABLE IF NOT EXISTS time
 (
-    start_time timestamp PRIMARY KEY NOT NULL,
-    hour int,
-    day int,
-    week int,
-    month int,
-    year int,
-    weekday int
+    start_time TIMESTAMP PRIMARY KEY NOT NULL,
+    hour INT,
+    day INT,
+    week INT,
+    month INT,
+    year INT,
+    weekday INT
 );
 """)
 
 songplay_table_create = (""" CREATE TABLE IF NOT EXISTS songplays
 (
     songplay_id IDENTITY(0,1) PRIMARY KEY NOT NULL,
-    start_time timestamp NOT NULL,
-    user_id int NOT NULL,
-    level varchar NOT NULL,
-    song_id varchar(),
-    artist_id varchar(),
-    session_id int,
-    location varchar(),
-    user_agent varchar(),
+    start_time TIMESTAMP NOT NULL,
+    user_id INT NOT NULL,
+    level VARCHAR(4) NOT NULL,
+    song_id VARCHAR(50),
+    artist_id VARCHAR(50),
+    session_id INT,
+    location VARCHAR(20),
+    user_agent VARCHAR(50),
     FOREIGN KEY(song_id) REFERENCES songs(song_id),
     FOREIGN KEY(artist_id) REFERENCES artists(artist_id)
 );
