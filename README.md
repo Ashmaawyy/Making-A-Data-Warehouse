@@ -5,7 +5,7 @@
 ## Project objectives
 
 - Moving Database to the cloud for scalability and performance.
-- Learning Amazon Redshift archeticture.
+- Learning Amazon Redshift architecture.
 - Learning how to load data into and from an S3 bucket.
 
 ## To run project scripts
