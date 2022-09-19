@@ -153,18 +153,20 @@ time_table_insert = (""" INSERT INTO time (start_time, hour, day, week, month, y
     DO UPDATE SET start_time = EXCLUDED.start_time;
 """)
 
-songplay_table_insert = (""" INSERT INTO songplays (start_time,
-                                                    user_id,
-                                                    level,
-                                                    session_id,
-                                                    location,
-                                                    user_agent,
-                                                    song_id,
-                                                    artist_id) \
-                                                    VALUES (SELECT TO_TIMESTAMP(ls), userId, level, sessionId, location, userAgent
-                                                            FROM staging_events
-                                                            WHERE page = 'NextSong';) \
-                                                    ON CONFLICT DO NOTHING;
+songplay_table_insert = (""" INSERT INTO songplays
+(
+    start_time,
+    user_id,
+    level,
+    session_id,
+    location,
+    user_agent,
+    song_id,
+    artist_id) \
+    VALUES (SELECT TO_TIMESTAMP(ls), userId, level, sessionId, location, userAgent
+            FROM staging_events
+            WHERE page = 'NextSong';) \
+    ON CONFLICT DO NOTHING;
 """)
 
 # QUERY LISTS
