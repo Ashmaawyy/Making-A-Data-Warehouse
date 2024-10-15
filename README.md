@@ -2,11 +2,11 @@
 
 <p align = 'center'><img src = 'https://www.levi9.com/wp-content/uploads/2021/09/Levi9-AWS-Redshift-Program-V2.png'/></p>
 
-## Project objectives
+## Using Amazon Redshift I:
 
-- Moving Database to the cloud for scalability and performance.
-- Learning Amazon Redshift architecture.
-- Learning how to load data into and from an S3 bucket.
+- Moved Database to the cloud for scalability and performance.
+- Loaded Data from S3 bucket to Spark.
+- Loaded Data from database tables into HDFS.
 
 ## To run project scripts
 
