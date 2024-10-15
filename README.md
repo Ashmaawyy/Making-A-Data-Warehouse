@@ -6,7 +6,7 @@
 
 - Moved Database to the cloud for scalability and performance.
 - Loaded Data from S3 bucket to Spark.
-- Loaded Data from database tables into HDFS.
+- Wrote database tables into HDFS.
 
 ## To run project scripts
 
