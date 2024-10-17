@@ -1,6 +1,6 @@
 # Sparkify Data Warehouse
 
-![Amazon Redshift]('https://cdn.freelogovectors.net/wp-content/uploads/2018/07/amazon-redshift-logo.png')
+![Amazon Redshift]('amazon-redshift-logo.png')
 
 ## Using Amazon Redshift I:
 
