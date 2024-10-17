@@ -1,6 +1,6 @@
 # Sparkify Data Warehouse
 
-![Amazon Redshift]('amazon-redshift-logo.png')
+![Amazon Redshift]('./amazon-redshift-logo.png')
 
 ## Using Amazon Redshift I:
 
