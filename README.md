@@ -1,6 +1,6 @@
 # Sparkify Data Warehouse
 
-<p align = 'center'><img src = 'https://www.levi9.com/wp-content/uploads/2021/09/Levi9-AWS-Redshift-Program-V2.png'/></p>
+<p align = 'center'><![Amazon Redshift]('https://www.levi9.com/wp-content/uploads/2021/09/Levi9-AWS-Redshift-Program-V2.png')</p>
 
 ## Using Amazon Redshift I:
 
