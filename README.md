@@ -1,6 +1,6 @@
 # Sparkify Data Warehouse
 
-<p align = 'center'><img src = 'https://cdn.freelogovectors.net/wp-content/uploads/2018/07/amazon-redshift-logo.png' width = 50 hieght = 40></img></p>
+<p align = 'center'><img src = 'https://cdn.freelogovectors.net/wp-content/uploads/2018/07/amazon-redshift-logo.png' width = 200 hieght = 100></img></p>
 
 ## Using Amazon Redshift I:
 
