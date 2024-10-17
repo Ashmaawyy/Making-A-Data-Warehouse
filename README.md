@@ -1,6 +1,6 @@
 # Sparkify Data Warehouse
 
-![Amazon Redshift]('./Amazon Redshift Logo - PNG Logo Vector Brand Downloads (SVG, EPS).jpeg')
+![Amazon Redshift]('./Amazon-Redshift-Logo.jpeg')
 
 ## Using Amazon Redshift I:
 
